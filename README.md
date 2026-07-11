@@ -28,8 +28,4 @@ A barter-style student learning platform that allows peers to exchange skills wi
    ```
 4. Access the site at `http://127.0.0.1:5004`.
 
-## Demo Credentials
-
-- **Bruce Wayne (Student 1):** `student1@campus.edu` | Password: `student123` (Offers Python, Wants Spanish)
-- **Clark Kent (Student 2):** `student2@campus.edu` | Password: `student123` (Offers Spanish, Wants Python)
-- **Diana Prince (Student 3):** `student3@campus.edu` | Password: `student123` (Offers Copywriting)
+> **Demo Credentials:** See `demo_credentials.txt` in this folder.
