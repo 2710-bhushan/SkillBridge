@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Login - CampusShare{% endblock %}
+{% block body_class %}login-body{% endblock %}
+
+{% block content %}
+<div class="login-card">
+    <div class="login-header">
+        <div class="login-logo">
+            <i class="bx bx-git-compare logo-icon"></i>
+            <span>CampusShare</span>
+        </div>
+        <h2>Sign In</h2>
+        <p>Access the P2P Student Skill Exchange</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('login') }}">
+        <div class="form-group">
+            <label for="email">Campus Email</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="username@campus.edu" required autocomplete="email">
+        </div>
+        
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn" style="width: 100%; margin-top: 1rem; justify-content: center; padding: 0.8rem;">
+            Sign In <i class="bx bx-right-arrow-alt"></i>
+        </button>
+    </form>
+
+    <div class="demo-credentials">
+        <h4>Demo Accounts</h4>
+        <ul class="demo-list">
+            <li><strong>Bruce Wayne:</strong> <span>student1@campus.edu</span> (PW: <code>student123</code>)</li>
+            <li><strong>Clark Kent:</strong> <span>student2@campus.edu</span> (PW: <code>student123</code>)</li>
+            <li><strong>Diana Prince:</strong> <span>student3@campus.edu</span> (PW: <code>student123</code>)</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}P2P Skill Exchange{% endblock %}</title>
+    <!-- Fonts and Icons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body class="{% block body_class %}{% endblock %}">
+
+    {% if current_user.is_authenticated %}
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="logo-container">
+            <i class="bx bx-git-compare logo-icon"></i>
+            <span class="logo-text">CampusShare</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li class="active">
+                <a href="{{ url_for('dashboard') }}">
+                    <i class="bx bxs-group"></i>
+                    <span>Skill Board</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="user-profile-section">
+            <div class="profile-info">
+                <div class="avatar">
+                    {{ current_user.name[0] }}
+                </div>
+                <div class="profile-details">
+                    <span class="profile-name" title="{{ current_user.name }}">{{ current_user.name }}</span>
+                    <span class="profile-role">Student</span>
+                </div>
+            </div>
+            <a href="{{ url_for('logout') }}" class="logout-btn">
+                <i class="bx bx-log-out"></i>
+                <span>Logout</span>
+            </a>
+        </div>
+    </aside>
+    {% endif %}
+
+    <!-- Main Content Area -->
+    <main class="main-content" style="{% if not current_user.is_authenticated %}margin-left: 0; padding: 0;{% endif %}">
+        {% if current_user.is_authenticated %}
+        <!-- Header -->
+        <header class="header">
+            <div class="header-title">
+                <h1>{% block header_title %}Skill Exchange Board{% endblock %}</h1>
+                <p>{% block header_subtitle %}Teach skills you know, learn skills you want. Cash-free peer learning.{% endblock %}</p>
+            </div>
+        </header>
+        {% endif %}
+
+        <!-- Flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="alerts">
+                    {% for category, message in messages %}
+                        <li class="alert alert-{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>
